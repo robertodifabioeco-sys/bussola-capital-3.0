@@ -160,7 +160,7 @@ main section[id]{scroll-margin-top:var(--header-h)}
 
 /* ============ INVESTITORI — manual strip ============ */
 .strip{position:relative;display:flex;align-items:center;gap:1.2rem}
-.strip-viewport{overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding:1rem 0}
+.strip-viewport{overflow-x:auto;scrollbar-width:none;padding:1rem 0}
 .strip-viewport::-webkit-scrollbar{display:none}
 .strip-track{display:flex;align-items:center;gap:2.2rem;width:max-content}
 .strip-arrow{flex-shrink:0;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--navy-deep);box-shadow:var(--shadow-sm);transition:var(--t)}
@@ -304,8 +304,8 @@ main section[id]{scroll-margin-top:var(--header-h)}
   .main-nav .nav-item-dropdown{width:100%}
   .main-nav .nav-dropdown-toggle{width:100%;justify-content:space-between}
   .main-nav .nav-dropdown-menu{position:static;transform:none;min-width:0;width:100%;box-shadow:none;border:none;padding:0 0 0 1rem;margin-top:.6rem;opacity:1;visibility:visible;display:none}
-  .main-nav .nav-item-dropdown.open .nav-dropdown-menu{display:block}
-  .main-nav .nav-dropdown-menu a{padding:.5rem 0;font-size:1rem}
+  .main-nav .nav-item-dropdown.open .nav-dropdown-menu{display:block;transform:none}
+  .main-nav .nav-dropdown-menu a{padding:.5rem 0;font-size:1rem;width:fit-content}
   .pillar-grid{grid-template-columns:repeat(2,1fr)}
   .why{flex-basis:280px;max-width:280px}
 }
@@ -1052,7 +1052,7 @@ main section[id]{scroll-margin-top:var(--header-h)}
     map.forEach(function(_l,s){so.observe(s);});
   }
 
-  // institutional investors strip (manual scroll)
+  // institutional investors strip: continuous auto-scroll + arrows/swipe
   document.querySelectorAll(".strip").forEach(function(strip){
     var viewport = strip.querySelector(".strip-viewport");
     var track = strip.querySelector(".strip-track");
@@ -1062,45 +1062,68 @@ main section[id]{scroll-margin-top:var(--header-h)}
     var amount = function(){ return viewport.clientWidth * 0.7; };
     var half = function(){ return track.scrollWidth / 2; };
 
-    var AUTO_SPEED = 0.6; // px per tick
+    // Position is kept as a float and written to scrollLeft every frame:
+    // mobile browsers round scrollLeft, so "scrollLeft += 0.6" never moved there.
+    var AUTO_SPEED = 36; // px per second
+    var pos = viewport.scrollLeft;
+    var last = 0;
     var paused = false;
+    var hovering = false;
     var resumeTimer = null;
 
-    function wrap(){
+    function wrapPos(){
       var h = half();
-      if (viewport.scrollLeft >= h) viewport.scrollLeft -= h;
-      else if (viewport.scrollLeft < 0) viewport.scrollLeft += h;
+      if (h <= 0) return;
+      if (pos >= h) pos -= h;
+      else if (pos < 0) pos += h;
     }
 
-    function tick(){
+    function tick(now){
+      var dt = last ? Math.min(now - last, 50) : 0;
+      last = now;
       if (!paused) {
-        viewport.scrollLeft += AUTO_SPEED;
-        wrap();
+        pos += AUTO_SPEED * dt / 1000;
+        wrapPos();
+        viewport.scrollLeft = pos;
       }
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
 
+    function resume(){
+      resumeTimer = null;
+      if (hovering) return;
+      pos = viewport.scrollLeft;
+      wrapPos();
+      paused = false;
+    }
     function pauseThenResume(delay){
       paused = true;
       if (resumeTimer) clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(function(){ paused = false; }, delay || 2600);
+      resumeTimer = setTimeout(resume, delay || 2600);
     }
 
-    strip.addEventListener("mouseenter", function(){ paused = true; });
-    strip.addEventListener("mouseleave", function(){ if(!resumeTimer) paused = false; else pauseThenResume(200); });
+    // hover-pause only for a real mouse: touch screens fire mouseenter on tap and never leave
+    strip.addEventListener("pointerenter", function(e){ if(e.pointerType === "mouse"){ hovering = true; paused = true; } });
+    strip.addEventListener("pointerleave", function(e){ if(e.pointerType === "mouse"){ hovering = false; pauseThenResume(200); } });
     viewport.addEventListener("wheel", function(){ pauseThenResume(); }, { passive: true });
-    viewport.addEventListener("touchstart", function(){ paused = true; }, { passive: true });
+    viewport.addEventListener("touchstart", function(){
+      paused = true;
+      if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
+    }, { passive: true });
     viewport.addEventListener("touchend", function(){ pauseThenResume(); }, { passive: true });
 
-    if(prev) prev.addEventListener("click", function(){
-      viewport.scrollBy({left:-amount(), behavior:"smooth"});
+    function nudge(dir){
+      var h = half(), a = amount(), cur = viewport.scrollLeft;
+      paused = true;
+      // jump to the identical duplicate first so there is always room to scroll either way
+      if (h > 0 && dir < 0 && cur < a) viewport.scrollLeft = cur + h;
+      else if (h > 0 && dir > 0 && cur >= h) viewport.scrollLeft = cur - h;
+      viewport.scrollBy({left: dir * a, behavior: "smooth"});
       pauseThenResume();
-    });
-    if(next) next.addEventListener("click", function(){
-      viewport.scrollBy({left:amount(), behavior:"smooth"});
-      pauseThenResume();
-    });
+    }
+    if(prev) prev.addEventListener("click", function(){ nudge(-1); });
+    if(next) next.addEventListener("click", function(){ nudge(1); });
   });
 
   // Processo: build reveal — steps appear one at a time automatically when the section scrolls into view
