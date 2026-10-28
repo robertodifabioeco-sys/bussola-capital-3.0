@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Bussola Capital — sito v3.1 (28/10/2026) -->
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -13,9 +14,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
 /* ==========================================================================
    BUSSOLA CAPITAL — light / premium single-page build
@@ -263,6 +262,9 @@ main section[id]{scroll-margin-top:var(--header-h)}
 .form-card .btn-primary{width:100%;justify-content:center;padding:1.15rem;font-size:.85rem}
 .form-msg{display:none;margin-top:1rem;padding:.9rem 1.1rem;background:#eef6f0;border:1px solid #cfe6d6;color:#2b6b45;border-radius:10px;font-size:.9rem}
 .form-msg.show{display:block}
+.form-note{margin-top:.9rem;font-size:.78rem;line-height:1.5;color:var(--muted);text-align:center}
+.form-note a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
+.form-note a:hover{color:var(--navy-deep)}
 
 /* ============ FOOTER (chiaro) ============ */
 .site-footer{background:var(--soft);border-top:1px solid var(--line);padding:3.6rem 0 2rem}
@@ -271,6 +273,9 @@ main section[id]{scroll-margin-top:var(--header-h)}
 .footer-brand p{color:var(--muted);font-size:.92rem;max-width:32ch}
 .footer-legal{color:var(--muted);font-size:.78rem;margin:.9rem 0 0}
 .footer-legal+.footer-legal{margin-top:.2rem}
+.footer-legal a{transition:var(--t)}
+.footer-legal-links{white-space:nowrap}
+.footer-legal a:hover{color:var(--navy)}
 .footer-col h4{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
 .footer-col p{color:var(--muted);font-size:.9rem;margin:0}
 .footer-col a{display:block;color:var(--muted);font-size:.9rem;transition:var(--t)}
@@ -646,15 +651,40 @@ main section[id]{scroll-margin-top:var(--header-h)}
     <div class="container">
       <div class="head center reveal">
         <span class="eyebrow" data-i18n="testimonials.eyebrow">Dicono di noi</span>
-        <h2 data-i18n="testimonials.title">Le testimonianze</h2>
-        <p class="lead" style="margin-left:auto;margin-right:auto" data-i18n="testimonials.lead">Sezione in aggiornamento</p>
+        <h2 data-i18n="testimonials.title">Rassegna stampa</h2>
       </div>
-      <!-- TODO: popolare con testimonianze reali (nome, ruolo, azienda, citazione). Duplicare .quote per ogni voce. -->
-      <div class="quotes reveal">
-        <figure class="quote"><div class="quote-mark">&ldquo;</div><p data-i18n="testimonials.soon">Testimonianza in arrivo</p><figcaption class="who" data-i18n="testimonials.updating">In aggiornamento</figcaption></figure>
-        <figure class="quote"><div class="quote-mark">&ldquo;</div><p data-i18n="testimonials.soon">Testimonianza in arrivo</p><figcaption class="who" data-i18n="testimonials.updating">In aggiornamento</figcaption></figure>
-        <figure class="quote"><div class="quote-mark">&ldquo;</div><p data-i18n="testimonials.soon">Testimonianza in arrivo</p><figcaption class="who" data-i18n="testimonials.updating">In aggiornamento</figcaption></figure>
+    </div>
+    <div class="strip reveal" aria-label="Rassegna stampa">
+      <button class="strip-arrow prev" type="button" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="strip-viewport">
+        <div class="strip-track">
+        <a class="logo-cell" aria-label="Financecommunity" href="https://financecommunity.it/al-via-il-search-fund-bussola-capital/" target="_blank" rel="noopener noreferrer"><img src="assets/press/financecommunity.png" alt="Financecommunity"></a>
+        <a class="logo-cell" aria-label="Milano Finanza" href="https://www.milanofinanza.it/news/il-ricambio-generazionale-cerca-capitali-nasce-il-search-fund-bussola-capital-202610221021241043" target="_blank" rel="noopener noreferrer"><img src="assets/press/milano-finanza.png" alt="Milano Finanza"></a>
+        <a class="logo-cell" aria-label="Borsa Italiana" href="https://www.borsaitaliana.it/borsa/notizie/teleborsa/finanza/search-fund-debutta-bussola-capital-potenza-di-fuoco-fino-a-50-milioni-di-euro-sulla-target-167_2026-10-13_TLB.html" target="_blank" rel="noopener noreferrer"><img src="assets/press/borsa-italiana.svg" alt="Borsa Italiana"></a>
+        <a class="logo-cell" aria-label="La Repubblica" href="https://finanza.repubblica.it/News/2026/10/13/search_fund_debutta_bussola_capital_potenza_di_fuoco_fino_a_50_milioni_di_euro_sulla_target-167/" target="_blank" rel="noopener noreferrer"><img src="assets/press/la-repubblica.svg" alt="La Repubblica"></a>
+        <a class="logo-cell" aria-label="Forbes Italia" href="https://forbes.it/2026/10/13/bussola-capital-search-fund-pmi-italiane-cambareri-positano" target="_blank" rel="noopener noreferrer"><img src="assets/press/forbes-italia.svg" alt="Forbes Italia"></a>
+        <a class="logo-cell" aria-label="BeBeez" href="https://bebeez.it/club-deal/search-fund-al-via-bussola-capital-che-raccoglie-665k-euro-per-la-sua-ricerca/" target="_blank" rel="noopener noreferrer"><img src="assets/press/bebeez.png" alt="BeBeez"></a>
+        <a class="logo-cell" aria-label="Pillole di Economia" href="https://www.linkedin.com/posts/pde-share-7515668161057406976-W9eO/" target="_blank" rel="noopener noreferrer"><img src="assets/press/pillole-di-economia.png" alt="Pillole di Economia"></a>
+        <a class="logo-cell" aria-label="FundsPeople" href="https://fundspeople.com/it/private-market-al-via-il-search-fund-bussola-capital/" target="_blank" rel="noopener noreferrer"><img src="assets/press/fundspeople.svg" alt="FundsPeople"></a>
+        <a class="logo-cell" aria-label="Teleborsa" href="https://www.teleborsa.it/News/2026/10/13/search-fund-debutta-bussola-capital-potenza-di-fuoco-fino-a-50-milioni-di-euro-sulla-target-167.html" target="_blank" rel="noopener noreferrer"><img src="assets/press/teleborsa.svg" alt="Teleborsa"></a>
+        <a class="logo-cell" aria-label="Roland Berger Alumni" href="https://alumni.rolandberger.com/pages/news/alumni_in_press/doc2587644.xml" target="_blank" rel="noopener noreferrer"><img src="assets/press/roland-berger-alumni.png" alt="Roland Berger Alumni"></a>
+        <a class="logo-cell" aria-label="Traders Union" href="https://tradersunion.com/it/news/financial-news/show/3793399-bussola-capital-search-fund-acquisition-pmi-italy/" target="_blank" rel="noopener noreferrer"><img src="assets/press/traders-union.svg" alt="Traders Union"></a>
+        <a class="logo-cell" aria-label="Gazzetta di Napoli" href="https://www.gazzettadinapoli.it/economia-2/industria-4-0/nasce-bussola-capital-search-fund-per-passaggio-generazionale-di-pmi/" target="_blank" rel="noopener noreferrer"><img src="assets/press/gazzetta-di-napoli.png" alt="Gazzetta di Napoli"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://financecommunity.it/al-via-il-search-fund-bussola-capital/" target="_blank" rel="noopener noreferrer"><img src="assets/press/financecommunity.png" alt="Financecommunity"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://www.milanofinanza.it/news/il-ricambio-generazionale-cerca-capitali-nasce-il-search-fund-bussola-capital-202610221021241043" target="_blank" rel="noopener noreferrer"><img src="assets/press/milano-finanza.png" alt="Milano Finanza"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://www.borsaitaliana.it/borsa/notizie/teleborsa/finanza/search-fund-debutta-bussola-capital-potenza-di-fuoco-fino-a-50-milioni-di-euro-sulla-target-167_2026-10-13_TLB.html" target="_blank" rel="noopener noreferrer"><img src="assets/press/borsa-italiana.svg" alt="Borsa Italiana"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://finanza.repubblica.it/News/2026/10/13/search_fund_debutta_bussola_capital_potenza_di_fuoco_fino_a_50_milioni_di_euro_sulla_target-167/" target="_blank" rel="noopener noreferrer"><img src="assets/press/la-repubblica.svg" alt="La Repubblica"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://forbes.it/2026/10/13/bussola-capital-search-fund-pmi-italiane-cambareri-positano" target="_blank" rel="noopener noreferrer"><img src="assets/press/forbes-italia.svg" alt="Forbes Italia"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://bebeez.it/club-deal/search-fund-al-via-bussola-capital-che-raccoglie-665k-euro-per-la-sua-ricerca/" target="_blank" rel="noopener noreferrer"><img src="assets/press/bebeez.png" alt="BeBeez"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://www.linkedin.com/posts/pde-share-7515668161057406976-W9eO/" target="_blank" rel="noopener noreferrer"><img src="assets/press/pillole-di-economia.png" alt="Pillole di Economia"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://fundspeople.com/it/private-market-al-via-il-search-fund-bussola-capital/" target="_blank" rel="noopener noreferrer"><img src="assets/press/fundspeople.svg" alt="FundsPeople"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://www.teleborsa.it/News/2026/10/13/search-fund-debutta-bussola-capital-potenza-di-fuoco-fino-a-50-milioni-di-euro-sulla-target-167.html" target="_blank" rel="noopener noreferrer"><img src="assets/press/teleborsa.svg" alt="Teleborsa"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://alumni.rolandberger.com/pages/news/alumni_in_press/doc2587644.xml" target="_blank" rel="noopener noreferrer"><img src="assets/press/roland-berger-alumni.png" alt="Roland Berger Alumni"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://tradersunion.com/it/news/financial-news/show/3793399-bussola-capital-search-fund-acquisition-pmi-italy/" target="_blank" rel="noopener noreferrer"><img src="assets/press/traders-union.svg" alt="Traders Union"></a>
+        <a class="logo-cell" aria-hidden="true" tabindex="-1" href="https://www.gazzettadinapoli.it/economia-2/industria-4-0/nasce-bussola-capital-search-fund-per-passaggio-generazionale-di-pmi/" target="_blank" rel="noopener noreferrer"><img src="assets/press/gazzetta-di-napoli.png" alt="Gazzetta di Napoli"></a>
+        </div>
       </div>
+      <button class="strip-arrow next" type="button" aria-label="Successivo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
   </section>
 
@@ -702,6 +732,7 @@ main section[id]{scroll-margin-top:var(--header-h)}
               <textarea id="f-message" name="message" required placeholder="Scrivi il tuo messaggio" data-i18n-placeholder="contact.form.message.ph"></textarea>
             </div>
             <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Invia</button>
+            <p class="form-note" data-i18n-html="contact.form.privacy">Inviando il modulo dichiari di aver letto l'<a href="privacy-policy.html" target="_blank" rel="noopener">Informativa privacy</a></p>
             <div class="form-msg" role="status" data-i18n="contact.form.success">Grazie per il tuo messaggio. Ti risponderemo al più presto</div>
           </form>
         </div>
@@ -755,7 +786,7 @@ main section[id]{scroll-margin-top:var(--header-h)}
 </svg>
         <p data-i18n="footer.tagline">Diamo continuità al futuro della tua azienda</p>
         <p class="footer-legal">&copy; 2026 Bussola Capital &middot; <span data-i18n="footer.rights">Tutti i diritti riservati</span></p>
-        <p class="footer-legal" data-i18n="footer.vat">P.ta IVA 14818860968</p>
+        <p class="footer-legal"><span data-i18n="footer.vat">P.ta IVA 14818860968</span> &middot; <span class="footer-legal-links"><a href="privacy-policy.html" data-i18n-href="footer.privacy.href">Privacy Policy</a> &middot; <a href="cookie-policy.html" data-i18n-href="footer.cookie.href">Cookie Policy</a></span></p>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer.address.label">Dove siamo</h4>
@@ -764,10 +795,6 @@ main section[id]{scroll-margin-top:var(--header-h)}
       <div class="footer-col">
         <h4 data-i18n="nav.cta">Contattaci</h4>
         <a href="mailto:management@bussolacapital.it">management@bussolacapital.it</a>
-        <a class="social-link" href="https://wa.me/393201512671" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.48 1.29 4.94L2 22l5.25-1.38c1.41.77 3.02 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.6 0-3.15-.43-4.5-1.24l-.32-.19-3.34.88.89-3.26-.21-.33a8.1 8.1 0 0 1-1.25-4.3c0-4.48 3.65-8.13 8.14-8.13 4.48 0 8.13 3.65 8.13 8.13 0 4.48-3.65 8.14-8.14 8.14zm4.46-6.1c-.24-.12-1.43-.71-1.65-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.78.95-.14.16-.29.18-.53.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.68-.14-.24-.02-.37.11-.49.11-.11.24-.29.36-.43.12-.14.16-.24.24-.4.08-.16.04-.31-.02-.43-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42-.14-.01-.31-.01-.47-.01-.16 0-.43.06-.66.31-.22.24-.86.84-.86 2.05 0 1.21.88 2.38 1 2.55.12.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.51.59.19 1.13.16 1.55.1.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.04.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
-          WhatsApp
-        </a>
       </div>
       <div class="footer-col">
         <h4 data-i18n="contact.social.label">Social</h4>
@@ -853,10 +880,7 @@ main section[id]{scroll-margin-top:var(--header-h)}
   "why.5.title": "Competenze e network",
   "why.5.text": "Mettiamo a disposizione competenze manageriali, finanziarie e strategiche, con un network di imprenditori, investitori e professionisti esperti",
   "testimonials.eyebrow": "Dicono di noi",
-  "testimonials.title": "Le testimonianze",
-  "testimonials.lead": "Sezione in aggiornamento",
-  "testimonials.soon": "Testimonianza in arrivo",
-  "testimonials.updating": "In aggiornamento",
+  "testimonials.title": "Rassegna stampa",
   "contact.eyebrow": "Contattaci",
   "contact.title": "La continuità della tua azienda è la nostra priorità",
   "contact.lead": "Siamo lieti di metterci a disposizione per approfondimenti e per esplorare insieme opportunità di collaborazione, nel rispetto della massima riservatezza",
@@ -870,18 +894,21 @@ main section[id]{scroll-margin-top:var(--header-h)}
   "contact.form.message.ph": "Scrivi il tuo messaggio",
   "contact.form.submit": "Invia",
   "contact.form.success": "Grazie per il tuo messaggio. Ti risponderemo al più presto",
+  "contact.form.privacy": "Inviando il modulo dichiari di aver letto l'<a href=\"privacy-policy.html\" target=\"_blank\" rel=\"noopener\">Informativa privacy</a>",
   "contact.address.value": "Via Lorenzo Mascheroni, 5, 20123 Milano MI",
   "contact.social.label": "Social",
   "footer.tagline": "Diamo continuità al futuro della tua azienda",
   "footer.rights": "Tutti i diritti riservati",
   "footer.address.label": "Dove siamo",
-  "footer.vat": "P.ta IVA 14818860968"
+  "footer.vat": "P.ta IVA 14818860968",
+  "footer.privacy.href": "privacy-policy.html",
+  "footer.cookie.href": "cookie-policy.html"
 }, en: {
   "nav.about": "About",
   "nav.goals": "What We Look For",
   "nav.process": "Process",
   "nav.why": "Why Bussola",
-  "nav.testimonials": "Testimonials",
+  "nav.testimonials": "Press",
   "nav.team": "Team",
   "nav.founders": "Founders",
   "nav.investors": "Investors",
@@ -945,11 +972,8 @@ main section[id]{scroll-margin-top:var(--header-h)}
   "why.4.text": "We work together to define the most suitable solution for each entrepreneur's needs, with close attention to confidentiality and shared objectives",
   "why.5.title": "Expertise and Network",
   "why.5.text": "We provide managerial, financial and strategic expertise, together with a network of entrepreneurs, investors and experienced professionals",
-  "testimonials.eyebrow": "Testimonials",
-  "testimonials.title": "Testimonials",
-  "testimonials.lead": "Section being updated",
-  "testimonials.soon": "Testimonial coming soon",
-  "testimonials.updating": "Updating",
+  "testimonials.eyebrow": "Press",
+  "testimonials.title": "In the press",
   "contact.eyebrow": "Contact",
   "contact.title": "Your company's continuity is our priority",
   "contact.lead": "We are glad to be available for further information and to explore opportunities for collaboration together, with the utmost confidentiality",
@@ -963,12 +987,15 @@ main section[id]{scroll-margin-top:var(--header-h)}
   "contact.form.message.ph": "Write your message",
   "contact.form.submit": "Send",
   "contact.form.success": "Thank you for your message. We will get back to you shortly",
+  "contact.form.privacy": "By submitting this form you confirm that you have read the <a href=\"privacy-policy-en.html\" target=\"_blank\" rel=\"noopener\">Privacy Notice</a>",
   "contact.address.value": "Via Lorenzo Mascheroni, 5, 20123 Milano MI",
   "contact.social.label": "Social",
   "footer.tagline": "We give continuity to your company's future",
   "footer.rights": "All rights reserved",
   "footer.address.label": "Where We Are",
-  "footer.vat": "P.ta IVA 14818860968"
+  "footer.vat": "P.ta IVA 14818860968",
+  "footer.privacy.href": "privacy-policy-en.html",
+  "footer.cookie.href": "cookie-policy-en.html"
 } };
 
   var LANG_KEY = "bussola-lang";
@@ -982,6 +1009,10 @@ main section[id]{scroll-margin-top:var(--header-h)}
     document.querySelectorAll("[data-i18n-html]").forEach(function(el){
       var key = el.getAttribute("data-i18n-html");
       if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll("[data-i18n-href]").forEach(function(el){
+      var key = el.getAttribute("data-i18n-href");
+      if (dict[key] !== undefined) el.setAttribute("href", dict[key]);
     });
     document.querySelectorAll("[data-i18n-placeholder]").forEach(function(el){
       var key = el.getAttribute("data-i18n-placeholder");

@@ -1,0 +1,94 @@
+/* ==========================================================================
+   BUSSOLA CAPITAL — pagine legali (Privacy / Cookie Policy)
+   Token, header e footer ripresi da index.html
+   ========================================================================== */
+:root{
+  --bg:#fbf8f3;
+  --soft:#f6f1e8;
+  --navy:#142440;
+  --navy-deep:#0a1626;
+  --ink:#1a1f2c;
+  --muted:#6b6458;
+  --line:#e6ddcc;
+  --gold:#c69a52;
+  --font-display:"Playfair Display","Georgia",serif;
+  --font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --container:1320px;
+  --header-h:92px;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+  --t:.3s var(--ease);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%}
+body,h1,h2,h3,p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+body{font-family:var(--font-body);color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.18;color:var(--navy-deep)}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 2rem}
+.eyebrow{display:inline-block;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1rem}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:1rem 2rem;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;border-radius:6px;transition:var(--t)}
+.btn-primary{background:var(--navy-deep);color:#fff;border:1px solid var(--navy-deep)}
+.btn-primary:hover{background:var(--navy);transform:translateY(-2px);box-shadow:0 10px 24px rgba(11,28,51,.18)}
+
+/* header */
+.site-header{position:fixed;inset:0 0 auto 0;z-index:900;height:var(--header-h);display:flex;align-items:center;background:#E3EDF4;border-bottom:1px solid var(--line)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+.brand-logo{display:block;width:202px;height:56px;flex-shrink:0}
+.header-actions{display:flex;align-items:center;gap:1.1rem;flex-shrink:0}
+.lang-switch{font-size:.86rem;letter-spacing:.03em;display:flex;align-items:center;gap:.4rem;white-space:nowrap}
+.lang-switch a{padding:.2rem .3rem;color:var(--muted);font-weight:600;transition:var(--t)}
+.lang-switch a.active{color:var(--navy-deep)}
+.lang-switch .divider{color:var(--line)}
+.header-cta{flex-shrink:0;padding:.8rem 1.3rem;font-size:.74rem}
+
+/* legal content */
+.legal{padding:calc(var(--header-h) + 4rem) 0 5rem}
+.legal-body{max-width:820px;margin:0 auto}
+.legal-body h1{font-size:clamp(2rem,3.4vw,2.7rem);letter-spacing:-.01em}
+.legal-updated{margin-top:.8rem;color:var(--muted);font-size:.86rem}
+.legal-body h2{font-size:1.35rem;margin:2.6rem 0 .8rem}
+.legal-body h3{font-family:var(--font-body);font-size:1rem;font-weight:600;margin:1.6rem 0 .5rem}
+.legal-body p,.legal-body li{color:var(--ink);font-size:.97rem}
+.legal-body p+p{margin-top:.8rem}
+.legal-body ul{margin:.6rem 0 0;padding-left:1.2rem}
+.legal-body li+li{margin-top:.4rem}
+.legal-body a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
+.legal-body a:hover{color:var(--navy-deep)}
+.legal-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.6rem;margin-top:1rem}
+.legal-card p{margin:0}
+.legal-card p+p{margin-top:.3rem}
+.legal-table-wrap{overflow-x:auto;margin-top:1rem}
+.legal-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;font-size:.9rem}
+.legal-table th,.legal-table td{padding:.8rem 1rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.legal-table th{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--soft)}
+.legal-table tr:last-child td{border-bottom:none}
+.todo{background:#fff3cd;color:#7a5200;padding:0 .25rem;border-radius:3px;font-weight:600}
+
+/* footer */
+.site-footer{background:var(--soft);border-top:1px solid var(--line);padding:3.6rem 0 2rem}
+.footer-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;align-items:start;text-align:left}
+.footer-logo{display:block;width:217px;height:60px;margin-bottom:.9rem}
+.footer-brand p{color:var(--muted);font-size:.92rem;max-width:32ch}
+.footer-legal{color:var(--muted);font-size:.78rem;margin:.9rem 0 0}
+.footer-legal+.footer-legal{margin-top:.2rem}
+.footer-legal a{transition:var(--t)}
+.footer-legal-links{white-space:nowrap}
+.footer-legal a:hover{color:var(--navy)}
+.footer-col h4{font-family:var(--font-display);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 .9rem}
+.footer-col p{color:var(--muted);font-size:.9rem;margin:0}
+.footer-col a{display:block;color:var(--muted);font-size:.9rem;transition:var(--t)}
+.footer-col a+a{margin-top:.4rem}
+.footer-col a:hover{color:var(--navy)}
+.footer-col .social-link{display:inline-flex;align-items:center;justify-content:flex-start;gap:.5rem}
+
+@media(max-width:960px){.footer-row{grid-template-columns:1fr 1fr;row-gap:2rem}}
+@media(max-width:860px){.brand-logo{width:166px;height:46px}}
+@media(max-width:560px){
+  .container{padding:0 1.3rem}
+  .header-cta{display:none}
+  .legal{padding-top:calc(var(--header-h) + 2.4rem)}
+  .footer-row{grid-template-columns:1fr}
+}
